@@ -50,22 +50,5 @@ namespace BankomatAPI.Controllers
             return NotFound();
         }
 
-        // POST api/<KartaKredytowaController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<KartaKredytowaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<KartaKredytowaController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

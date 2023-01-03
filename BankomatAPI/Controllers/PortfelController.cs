@@ -39,24 +39,6 @@ namespace BankomatAPI.Controllers
             return wallet.Sum;
         }
 
-        // POST api/<PortfelController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<PortfelController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PortfelController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-
 
     }
 }
