@@ -2,7 +2,7 @@
 
 namespace BankomatAPI.Classes
 {
-    public class Portfel : AbstractBanknoty
+    public class Portfel
     {
         [Key]
         public int Id { get; set; }

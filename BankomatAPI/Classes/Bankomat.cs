@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BankomatAPI.Classes
 {
-    public class Bankomat: AbstractBanknoty
+    public class Bankomat
     {
         [Key]
         public int Id { get; set; }

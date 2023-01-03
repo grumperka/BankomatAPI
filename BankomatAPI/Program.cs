@@ -36,6 +36,6 @@ var services = scope.ServiceProvider;
 
 var initialiser = services.GetRequiredService<BankomatInitializer>();
 
-initialiser.Initialize();
+//initialiser.Initialize();
 
 app.Run();

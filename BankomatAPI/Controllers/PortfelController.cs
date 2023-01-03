@@ -26,9 +26,17 @@ namespace BankomatAPI.Controllers
 
         // GET api/<PortfelController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public List<Banknot> Get(int id)
         {
-            return "value";
+            return this._context.Banknots.Where(w => w.WalletId == id).ToList();
+        }
+
+        [HttpGet]
+        [Route("GetBalance/{id}")]
+        public float GetBalance(int id)
+        {
+            var wallet = this._context.Portfels.Find(id);
+            return wallet.Sum;
         }
 
         // POST api/<PortfelController>
@@ -48,5 +56,7 @@ namespace BankomatAPI.Controllers
         public void Delete(int id)
         {
         }
+
+
     }
 }
