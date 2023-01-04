@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BankomatAPI.Classes
+namespace BibliotekaKlas
 {
     public class KartaKredytowa
     {

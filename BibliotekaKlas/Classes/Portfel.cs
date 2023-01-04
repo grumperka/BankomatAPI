@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BibliotekaKlas.Classes;
+using System.ComponentModel.DataAnnotations;
 
-namespace BankomatAPI.Classes
+namespace BibliotekaKlas
 {
     public class Portfel
     {
@@ -16,6 +17,8 @@ namespace BankomatAPI.Classes
         public float Sum { get; set; }
 
         public virtual ICollection<Banknot> BanknotsList { get; set; }
+
+        public virtual ICollection<Moneta> MonetasList { get; set; }
 
         /*
         public Portfel(Wlasciciel owner) { 

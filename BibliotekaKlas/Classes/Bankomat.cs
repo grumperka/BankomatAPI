@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace BankomatAPI.Classes
+namespace BibliotekaKlas
 {
     public class Bankomat
     {

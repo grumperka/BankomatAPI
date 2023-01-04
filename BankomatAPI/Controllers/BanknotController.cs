@@ -1,5 +1,5 @@
-﻿using BankomatAPI.Classes;
-using BankomatAPI.DAL;
+﻿using BankomatAPI.DAL;
+using BibliotekaKlas;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Timers;

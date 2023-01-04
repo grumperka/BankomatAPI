@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BankomatAPI.Classes
+namespace BibliotekaKlas
 {
     public class Transakcja
     {

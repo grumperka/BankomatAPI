@@ -1,4 +1,4 @@
-﻿using BankomatAPI.Classes;
+﻿using BibliotekaKlas;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankomatAPI.DAL

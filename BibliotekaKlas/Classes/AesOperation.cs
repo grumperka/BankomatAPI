@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BankomatAPI.Classes
+namespace BibliotekaKlas
 {
     public class AesOperation
     {
