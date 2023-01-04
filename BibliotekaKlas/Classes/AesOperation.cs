@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BibliotekaKlas
+namespace BibliotekaKlas.Classes
 {
     public class AesOperation
     {

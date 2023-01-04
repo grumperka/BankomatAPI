@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BibliotekaKlas
+namespace BibliotekaKlas.Classes
 {
     public class Konto
     {
@@ -8,7 +8,7 @@ namespace BibliotekaKlas
         public int Id { get; set; }
 
         [Required]
-        public long Balance { get; set; }
+        public double Balance { get; set; }
 
         [Required]
         public int OwnerId { get; set; }
@@ -19,22 +19,25 @@ namespace BibliotekaKlas
 
             if (banknots != null)
             {
-                foreach (Banknot banknot in banknots)
-                {
-                    if (banknot.isValue(banknot.Value) == true)
+                if (banknots.Any()) { 
+                    foreach (Banknot banknot in banknots)
                     {
-                        this.Balance += banknot.Value;
-                        banknot.WalletId = null;
-                    } 
-                    else return null;
-                }
+                        if (banknot.isValue(banknot.Value) == true)
+                        {
+                            this.Balance += banknot.Value;
+                            banknot.WalletId = null;
+                        } 
+                        else return null;
+                    }
 
-                return banknots;
+                    return banknots;
+                }
+                else return null;
             }
             else return null;
         }
 
-        public bool isEnough(int value) {
+        public bool isEnough(double value) {
 
             if (this.Balance >= value)
             {
@@ -44,7 +47,7 @@ namespace BibliotekaKlas
 
         }
 
-        public bool WithdrawingOperation(int value) {
+        public bool WithdrawingOperation(double value) {
 
             if (this.isEnough(value))
             {
@@ -54,5 +57,18 @@ namespace BibliotekaKlas
             return false;
         
         }
+
+        public bool TransferOperation(double value)
+        {
+            if (value > 0)
+            {
+                this.Balance += value;
+                return true;
+            }
+            else return false;
+            
+        }
+
+
     }
 }

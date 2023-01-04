@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace BibliotekaKlas
+namespace BibliotekaKlas.Classes
 {
     public class Bankomat
     {
@@ -21,7 +21,7 @@ namespace BibliotekaKlas
 
         public int getBanknotsCount(int nominal)
         {
-            return BanknotsList.Where(w => w.Value == nominal).ToList().Count;
+            return BanknotsList.Where(w => w.Value == nominal).ToList().Count();
         }
 
         public List<Banknot> withdrawMoneyFromATM(int value) {

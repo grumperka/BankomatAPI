@@ -1,6 +1,7 @@
-﻿using BibliotekaKlas;
+﻿using BibliotekaKlas.Classes;
 using BankomatAPI.DAL;
 using System.Data.Entity;
+using BibliotekaKlas.Classes;
 
 namespace BankomatAPI.DAL
 {
@@ -33,7 +34,42 @@ namespace BankomatAPI.DAL
                 banknots.ForEach(b => this.context.Banknots.Add(b));
                 this.context.SaveChanges();
             }
+
+            ///////////////////////////
+            List<Moneta> monetas = new List<Moneta>();
+
+            if (!this.context.Monetas.Any()) {
+
+                for (int i = 0; i < 5; i++)
+                {
+                    monetas.Add(new Moneta(0.01));
+                    monetas.Add(new Moneta(0.02));
+                    monetas.Add(new Moneta(0.05));
+                    monetas.Add(new Moneta(0.1));
+                    monetas.Add(new Moneta(0.2));
+                    monetas.Add(new Moneta(0.5));
+                    monetas.Add(new Moneta(1));
+                    monetas.Add(new Moneta(2));
+                    monetas.Add(new Moneta(5));
+                    monetas.Add(new Moneta(5));
+
+                    monetas.Add(new Moneta(5));
+                    monetas.Add(new Moneta(5));
+                    monetas.Add(new Moneta(2));
+                    monetas.Add(new Moneta(1));
+                    monetas.Add(new Moneta(0.5));
+                    monetas.Add(new Moneta(0.2));
+                    monetas.Add(new Moneta(0.1));
+                    monetas.Add(new Moneta(0.05));
+                    monetas.Add(new Moneta(0.02));
+                    monetas.Add(new Moneta(0.01));
+                }
+
+                monetas.ForEach(m => this.context.Monetas.Add(m));
+                this.context.SaveChanges();
+            }
             
+            ////////////////////////////
 
             List<Wlasciciel> wlasciciel = new List<Wlasciciel>();
 
@@ -99,14 +135,25 @@ namespace BankomatAPI.DAL
                     banknoty.Add(banknots.ElementAt(i+10));
                     banknoty.Add(banknots.ElementAt(i+20));
 
-                    portfels.Add(new Portfel { Sum = banknoty.Sum(s => s.Value), Owner = wlasciciel.ElementAt(i), BanknotsList = banknoty }); 
+                    List<Moneta> monety = new List<Moneta>();
+                    monety.Add(monetas.ElementAt(i));
+                    monety.Add(monetas.ElementAt(i + 10));
+                    monety.Add(monetas.ElementAt(i + 20));
+                    monety.Add(monetas.ElementAt(i + 30));
+                    monety.Add(monetas.ElementAt(i + 40));
+                    monety.Add(monetas.ElementAt(i + 50));
+                    monety.Add(monetas.ElementAt(i + 60));
+                    monety.Add(monetas.ElementAt(i + 70));
+                    monety.Add(monetas.ElementAt(i + 80));
+                    monety.Add(monetas.ElementAt(i + 90));
+
+                    portfels.Add(new Portfel { Sum = banknoty.Sum(s => s.Value) + monety.Sum(s => s.Value), Owner = wlasciciel.ElementAt(i), BanknotsList = banknoty, MonetasList = monety }); 
                 }
 
                 portfels.ForEach(p => this.context.Portfels.Add(p));
                 this.context.SaveChanges();
             }
 
-           
 
             List<Bankomat> bankomats = new List<Bankomat>();
 

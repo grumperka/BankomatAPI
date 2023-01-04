@@ -1,5 +1,5 @@
 ﻿using BankomatAPI.DAL;
-using BibliotekaKlas;
+using BibliotekaKlas.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,9 +39,10 @@ namespace BankomatAPI.Controllers
             var kartaKredytowa = this._context.KartaKredytowas.Where(w => w.AccountId == accountId).FirstOrDefault();
 
             if (kartaKredytowa != null) {
-                var decryptedString = AesOperation.DecryptString(this._context.Key, kartaKredytowa.PIN);
 
-                if (decryptedString.Equals(pin)) {
+                bool isEqual = kartaKredytowa.checkPIN(pin,this._context.Key);
+
+                if (isEqual) {
                     return Ok();
                 }
                 else return Forbid();

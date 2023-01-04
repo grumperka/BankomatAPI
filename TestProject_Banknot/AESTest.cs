@@ -1,9 +1,9 @@
-using BibliotekaKlas;
+using BibliotekaKlas.Classes;
 using NUnit.Framework;
 
 namespace TestProject_Banknot
 {
-    public class Tests
+    public class AESTest
     {
         private string key;
 

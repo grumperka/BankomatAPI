@@ -1,19 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BibliotekaKlas.Classes;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BibliotekaKlas
+namespace BibliotekaKlas.Classes
 {
-    public class Transakcja
+    public class Transakcja : Dzialanie<int>
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        public int Value { get; set; }
-
-        [Required]
-        public DateTime DateTime { get; set; }
-
         [Required]
         public int AccountId { get; set; }
 

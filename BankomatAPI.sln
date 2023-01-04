@@ -6,8 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankomatAPI", "BankomatAPI\BankomatAPI.csproj", "{B40DC329-5482-4534-AA8F-2A4067022DE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject_Banknot", "TestProject_Banknot\TestProject_Banknot.csproj", "{F746824C-F8D5-42F6-8651-852B91CF39D6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{44F14742-43D6-418E-BB19-25D65F85DC24} = {44F14742-43D6-418E-BB19-25D65F85DC24}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotekaKlas", "BibliotekaKlas\BibliotekaKlas.csproj", "{44F14742-43D6-418E-BB19-25D65F85DC24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotekaKlas", "BibliotekaKlas\BibliotekaKlas.csproj", "{44F14742-43D6-418E-BB19-25D65F85DC24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

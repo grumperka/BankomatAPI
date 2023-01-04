@@ -1,7 +1,7 @@
 ﻿using BibliotekaKlas.Classes;
 using System.ComponentModel.DataAnnotations;
 
-namespace BibliotekaKlas
+namespace BibliotekaKlas.Classes
 {
     public class Portfel
     {
@@ -14,7 +14,7 @@ namespace BibliotekaKlas
         public virtual Wlasciciel Owner { get; set; }
 
         [Required]
-        public float Sum { get; set; }
+        public double Sum { get; set; }
 
         public virtual ICollection<Banknot> BanknotsList { get; set; }
 
@@ -29,11 +29,12 @@ namespace BibliotekaKlas
         }*/
 
 
-        public bool isEnough(int value)
+        public bool isEnough(double value)
         {
             if (this.Sum >= value) { return true; }
             else { return false; }
         }
+
         public bool addBanknot(Banknot banknot) {
 
             if (banknot.isValue(banknot.Value) == true)
@@ -73,6 +74,11 @@ namespace BibliotekaKlas
         public int getBanknotsCount(int nominal)
         {
             return BanknotsList.Where(w => w.Value == nominal).ToList().Count;
+        }
+
+        public int getMonetasCount(double nominal)
+        {
+            return MonetasList.Where(w => w.Value == nominal).ToList().Count;
         }
 
         public List<Banknot>? GetBanknots(int value) {

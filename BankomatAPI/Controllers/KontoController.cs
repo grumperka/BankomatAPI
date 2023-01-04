@@ -1,4 +1,4 @@
-﻿using BibliotekaKlas;
+﻿using BibliotekaKlas.Classes;
 using BankomatAPI.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +15,7 @@ namespace BankomatAPI.Controllers
     {
         private readonly BankomatContext _context;
 
-        public KontoController(BankomatContext context) { 
+        public KontoController(BankomatContext context) {
             _context = context;
         }
 
@@ -30,9 +30,40 @@ namespace BankomatAPI.Controllers
         [HttpGet("{id}")]
         public Konto? Get(int id)
         {
-            var konto =  _context.Kontos.Where(w => w.Id == id).FirstOrDefault();
+            var konto = _context.Kontos.Where(w => w.Id == id).FirstOrDefault();
 
             return konto;
+        }
+
+        [HttpPost]
+        [Route("TransferMoney")]
+        public IActionResult Get(int FromAccountId, [FromBody] Przelew transfer)
+        {
+            var kontoFrom = _context.Kontos.Where(w => w.Id == transfer.FromAccountId).FirstOrDefault();
+            var kontoTo = _context.Kontos.Where(w => w.Id == transfer.ToAccountId).FirstOrDefault();
+
+            if (kontoFrom != null && kontoTo != null) {
+
+                bool isEnough = kontoFrom.isEnough(transfer.Value);
+
+                if (!isEnough) return BadRequest();
+
+                bool isWithdrawed = kontoFrom.WithdrawingOperation(transfer.Value);
+
+                if (!isWithdrawed) return BadRequest();
+
+                bool isTransfered = kontoTo.TransferOperation(transfer.Value);
+
+                if (isTransfered)
+                {
+                    transfer.DateTime = DateTime.Now;
+                    _context.SaveChanges();
+                    return Ok();
+                }
+                else return BadRequest();
+
+            }
+            else return NotFound();
         }
 
     }
