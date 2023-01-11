@@ -62,13 +62,20 @@ namespace BibliotekaKlas.Classes
 
         }
 
-        public bool AddRange(List<Banknot> banknots) {
+        public List<Banknot> AddRange(List<Banknot> banknots) {
+
+            List<Banknot> errors = new List<Banknot>();
 
             foreach (Banknot banknot in banknots) {
-                this.addBanknot(banknot);
+
+                if (banknot.isValue(banknot.Value) == true) { this.addBanknot(banknot); }
+                else errors.Add(banknot);
+                
             }
 
-            return true;
+            if(errors.Any()) return errors;
+
+            return errors;
         }
 
         public int getBanknotsCount(int nominal)

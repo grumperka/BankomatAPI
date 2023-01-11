@@ -66,9 +66,9 @@ namespace BankomatAPI.Controllers
                 }
 
                 bool balanceChange = konto.WithdrawingOperation(transakcja.Value); //zmiana stanu konta 
-                bool results = portfel.AddRange(result); //banknoty do portfela
+                var results = portfel.AddRange(result); //banknoty do portfela
 
-                if (results && balanceChange)
+                if (!results.Any() && balanceChange)
                 {
                     transakcja.DateTime = DateTime.Now;
                     _context.Transakcjas.Add(transakcja);
