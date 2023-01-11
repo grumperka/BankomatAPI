@@ -36,7 +36,7 @@ namespace BibliotekaKlas.Classes
 
         public override bool isValue(double value){
 
-            if (value < 0 || value != 0.01 || value != 0.02 || value != 0.05 || value != 0.1 || value != 0.2 || value != 0.5 || value != 1.0 || value != 2.0 || value != 5.0)
+            if (value == 0.01 || value == 0.02 || value == 0.05 || value == 0.1 || value == 0.2 || value == 0.5 || value == 1.0 || value == 2.0 || value == 5.0)
             {
                 return true;
             }
