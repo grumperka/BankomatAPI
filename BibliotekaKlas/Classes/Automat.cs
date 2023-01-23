@@ -16,7 +16,7 @@ namespace BibliotekaKlas.Classes
         public string Name { get; set; }
 
         [Required]
-        public float Sum { get; set; }
+        public double Sum { get; set; }
 
         public virtual ICollection<Moneta> MonetasList { get; set; }
     }

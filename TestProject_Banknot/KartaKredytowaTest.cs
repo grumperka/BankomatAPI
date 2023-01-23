@@ -26,7 +26,7 @@ namespace TestProject_Banknot
 
             Assert.IsTrue(result == true);
 
-            ////////////////
+            //////////////// nieprawidłowy PIN
             ///
             result = kartaKredytowa.checkPIN("1256", this.setup.key);
 
@@ -40,11 +40,13 @@ namespace TestProject_Banknot
 
             float value = 99;
 
+            //////////////////// kwota poniżej 100 zł, transakcja nie wymaga zatwierdzenia PINem
+            ///
             bool result = kartaKredytowa.requiredPIN(value);
 
             Assert.IsTrue(result == false);
 
-            ////////////////////
+            //////////////////// kwota powyżej 100 zł, transakcja wymaga zatwierdzenia PINem
             ///
             value = 101;
 

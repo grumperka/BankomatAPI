@@ -26,7 +26,7 @@ namespace TestProject_Banknot
 
             bool result = moneta.isValue(value);
             Assert.IsTrue(result);
-            ///////////////////////
+            /////////////////////// zły nominał
 
             value = 0.25;
             result = moneta.isValue(value);

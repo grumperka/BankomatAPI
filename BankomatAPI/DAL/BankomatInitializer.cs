@@ -185,6 +185,37 @@ namespace BankomatAPI.DAL
 
             }
 
+            List<Automat> automats = new List<Automat>();
+
+            if (!context.Automats.Any()) {
+
+                for (int j = 0; j < 5; j++)
+                {
+
+                    List<Moneta> monetaList = new List<Moneta>();
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        monetaList.Add(new Moneta(0.05));
+                        monetaList.Add(new Moneta(0.1));
+                        monetaList.Add(new Moneta(0.5));
+                        monetaList.Add(new Moneta(0.5));
+
+                        monetaList.Add(new Moneta(1.0));
+                        monetaList.Add(new Moneta(2.0));
+                        monetaList.Add(new Moneta(5.0));
+                    }
+
+                    monetaList.ForEach(m => this.context.Monetas.Add(m));
+                    this.context.SaveChanges();
+
+                    automats.Add(new Automat { MonetasList = monetaList, Name = "Automat nr. " + j, Sum = monetaList.Sum(s => s.Value) });
+                }
+
+                automats.ForEach(a => this.context.Automats.Add(a));
+                this.context.SaveChanges();
+            }
+
 
         }
        }

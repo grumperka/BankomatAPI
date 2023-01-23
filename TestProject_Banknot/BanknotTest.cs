@@ -32,6 +32,7 @@ namespace TestProject_Banknot
             Assert.IsTrue(isValueT == true && isValueF == false && isValueFF == false && isValueFFF == false);
 
         }
+ 
 
     }
 }
